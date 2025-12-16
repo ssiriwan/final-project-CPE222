@@ -24,14 +24,14 @@ module calculator_core(
     
     reg [13:0] val1;
     reg [13:0] val2;
-    reg [27:0] res; // à¼×èÍ¼Å¤Ù³¤èÒàÂÍĞæ
+    reg [27:0] res; // Ã Â¼Ã—Ã¨ÃÂ¼Ã…Â¤Ã™Â³Â¤Ã¨Ã’Ã Ã‚ÃÃÃ¦
      
     // --- MAIN LOGIC BLOCK ---
     always @(posedge clk or posedge rst) begin
         if(rst) begin
             // Reset everything
-            num[0] <= 0; num[1] <= 0; num[2] <= 0; num[3] <= 0;
-            num2[0] <= 0; num2[1] <= 0; num2[2] <= 0; num2[3] <= 0;
+            if(count == 0) begin num[0] <= 0; num[1] <= 0; num[2] <= 0; num[3] <= 0; end
+            else if(count == 1) begin num2[0] <= 0; num2[1] <= 0; num2[2] <= 0; num2[3] <= 0; end
             active_digit <= 2'b00;
             prev_btnL <= 0; prev_btnR <= 0; prev_btnU <= 0; prev_btnD <= 0; prev_btnC <= 0;
             isError <= 0;
